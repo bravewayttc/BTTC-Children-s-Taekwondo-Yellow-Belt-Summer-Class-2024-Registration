@@ -35,19 +35,15 @@ def select_date(str):
         else:
             st.error("Please select a date between 15/7 and 30/8.")
 
-    # Determine the day of the week
 
     return day_of_week,selected_date
 
 def send_email(parent_name, content_number, living_area, kid_name, kid_yeasold, kid_gender, lessons, Noticication):
-    # Set up the SMTP server and login.
-    # Replace 'your_email@example.com' and 'your_password' with your actual email and password.
-    # For Gmail, the server is 'smtp.gmail.com' and the port is 587.
     server = smtplib.SMTP('smtp.gmail.com', 587)
     server.ehlo()
     server.starttls()
     server.login("bravewayttc.autoreply@gmail.com", "apfd anno qfpa bwla")
-    #"bravewayttc.autoreply@gmail.com", "apfd anno qfpa bwla"
+
     # Create the email.
     msg = MIMEMultipart()
     msg['From'] = "bravewayttc.autoreply@gmail.com"
@@ -106,50 +102,50 @@ def main():
 
     lesson1_day,lesson1_date = select_date("第一堂日期(星期一至星期六)：")
     lesson1_time,j = selecttime(lesson1_day,lesson1_date,j)
-    st.write(f"第二堂日期是{lesson1_date}，時段是{lesson1_time}")
+    st.write(f"第二堂日期是{lesson1_date} {lesson1_day}，時段是{lesson1_time}")
     lesson2_day,lesson2_date = select_date("第二堂日期(星期一至星期六)：")
     lesson2_time,j = selecttime(lesson2_day,lesson2_date,j)
-    st.write(f"第二堂日期是{lesson2_date}，時段是{lesson2_time}")
+    st.write(f"第二堂日期是{lesson2_date} {lesson2_day}，時段是{lesson2_time}")
     lesson3_day, lesson3_date = select_date("第三堂日期(星期一至星期六)：")
     lesson3_time,j = selecttime(lesson3_day,lesson3_date,j)
-    st.write(f"第三堂日期是{lesson3_date}，時段是{lesson3_time}")
+    st.write(f"第三堂日期是{lesson3_date} {lesson3_day}，時段是{lesson3_time}")
     lesson4_day, lesson4_date = select_date("第四堂日期(星期一至星期六)：")
     lesson4_time,j = selecttime(lesson4_day,lesson4_date,j)
-    st.write(f"第三堂日期是{lesson4_date}，時段是{lesson4_time}")
+    st.write(f"第三堂日期是{lesson4_date} {lesson4_day}，時段是{lesson4_time}")
     lesson5_day, lesson5_date = select_date("第五堂日期(星期一至星期六)：")
     lesson5_time,j = selecttime(lesson5_day,lesson5_date,j)
-    st.write(f"第五堂日期是{lesson5_date}，時段是{lesson5_time}")
+    st.write(f"第五堂日期是{lesson5_date} {lesson5_day}，時段是{lesson5_time}")
     lesson6_day, lesson6_date = select_date("第六堂日期(星期一至星期六)：")
     lesson6_time,j = selecttime(lesson6_day,lesson6_date,j)
-    st.write(f"第六堂日期是{lesson6_date}，時段是{lesson6_time}")
+    st.write(f"第六堂日期是{lesson6_date} {lesson6_day}，時段是{lesson6_time}")
     lesson7_day, lesson7_date = select_date("第七堂日期(星期一至星期六)：")
     lesson7_time,j = selecttime(lesson7_day,lesson7_date,j)
-    st.write(f"第七堂日期是{lesson7_date}，時段是{lesson7_time}")
+    st.write(f"第七堂日期是{lesson7_date} {lesson7_day}，時段是{lesson7_time}")
     lesson8_day, lesson8_date = select_date("第八堂日期(星期一至星期六)：")
     lesson8_time,j = selecttime(lesson8_day,lesson8_date,j)
-    st.write(f"第八堂日期是{lesson8_date}，時段是{lesson8_time}")
+    st.write(f"第八堂日期是{lesson8_date} {lesson8_day}，時段是{lesson8_time}")
     lesson9_day, lesson9_date = select_date("第九堂日期(星期一至星期六)：")
     lesson9_time,j = selecttime(lesson9_day,lesson9_date,j)
-    st.write(f"第九堂日期是{lesson9_date}，時段是{lesson9_time}")
+    st.write(f"第九堂日期是{lesson9_date} {lesson9_day}，時段是{lesson9_time}")
     lesson10_day, lesson10_date = select_date("第十堂日期(星期一至星期六)：")
     lesson10_time,j = selecttime(lesson10_day,lesson10_date,j)
-    st.write(f"第十堂日期是{lesson10_date}，時段是{lesson10_time}")
+    st.write(f"第十堂日期是{lesson10_date} {lesson10_day}，時段是{lesson10_time}")
 
 
     # Submit button
     if st.button("Submit"):
         st.write()
         lessons = [
-            f"Lesson 1: {lesson1_date} {lesson1_time}",
-            f"Lesson 2: {lesson2_date} {lesson2_time}",
-            f"Lesson 3: {lesson3_date} {lesson3_time}",
-            f"Lesson 4: {lesson4_date} {lesson4_time}",
-            f"Lesson 5: {lesson5_date} {lesson5_time}",
-            f"Lesson 6: {lesson6_date} {lesson6_time}",
-            f"Lesson 7: {lesson7_date} {lesson7_time}",
-            f"Lesson 8: {lesson8_date} {lesson8_time}",
-            f"Lesson 9: {lesson9_date} {lesson9_time}",
-            f"Lesson 10: {lesson10_date} {lesson10_time}"
+            f"Lesson 1: {lesson1_date} ({lesson1_day}) {lesson1_time}",
+            f"Lesson 2: {lesson2_date} ({lesson2_day}) {lesson2_time}",
+            f"Lesson 3: {lesson3_date} ({lesson3_day}) {lesson3_time}",
+            f"Lesson 4: {lesson4_date} ({lesson4_day}) {lesson4_time}",
+            f"Lesson 5: {lesson5_date} ({lesson5_day}) {lesson5_time}",
+            f"Lesson 6: {lesson6_date} ({lesson6_day}) {lesson6_time}",
+            f"Lesson 7: {lesson7_date} ({lesson7_day}) {lesson7_time}",
+            f"Lesson 8: {lesson8_date} ({lesson8_day}) {lesson8_time}",
+            f"Lesson 9: {lesson9_date} ({lesson9_day}) {lesson9_time}",
+            f"Lesson 10: {lesson10_date} ({lesson10_day}) {lesson10_time}"
         ]
         send_email(parant_name, content_number, living_area, kid_name, kid_yeasold, kid_gender, lessons, Notification)
 
