@@ -51,7 +51,8 @@ def send_email(parent_name, content_number, living_area, kid_name, kid_yeasold, 
     # Create the email.
     msg = MIMEMultipart()
     msg['From'] = "bravewayttc.autoreply@gmail.com"
-    msg['To'] = "hoyin99999@gmail.com"
+    msg['To'] = "Wingchun817@gmail.com"
+    msg['CC'] = "hoyin99999@gmail.com"
     msg['Subject'] = f"育苗跆拳道訓練中心 兒童跆拳道黃帶暑期班2024 {parent_name}報名"
 
     # Compose the email body with the collected information.
