@@ -39,28 +39,30 @@ def select_date(str):
 
     return day_of_week,selected_date
 
-def send_email(parent_name, content_number, living_area, kid_name, kid_yeasold, kid_gender, lessons):
+def send_email(parent_name, content_number, living_area, kid_name, kid_yeasold, kid_gender, lessons, Noticication):
     # Set up the SMTP server and login.
     # Replace 'your_email@example.com' and 'your_password' with your actual email and password.
     # For Gmail, the server is 'smtp.gmail.com' and the port is 587.
     server = smtplib.SMTP('smtp.gmail.com', 587)
+    server.ehlo()
     server.starttls()
-    server.login("hoyin99999@gmail.com", "Maulei41")
-    #"bravewayttc.autoreply@gmail.com", "BTTCeway2024"
+    server.login("bravewayttc.autoreply@gmail.com", "apfd anno qfpa bwla")
+    #"bravewayttc.autoreply@gmail.com", "apfd anno qfpa bwla"
     # Create the email.
     msg = MIMEMultipart()
-    msg['From'] = "hoyin99999@gmail.com"
+    msg['From'] = "bravewayttc.autoreply@gmail.com"
     msg['To'] = "hoyin99999@gmail.com"
-    msg['Subject'] = "育苗跆拳道訓練中心 兒童跆拳道黃帶暑期班2024 報名"
+    msg['Subject'] = f"育苗跆拳道訓練中心 兒童跆拳道黃帶暑期班2024 {parent_name}報名"
 
     # Compose the email body with the collected information.
     body = f"家長稱謂： {parent_name}\n" \
            f"聯絡電話： {content_number}\n" \
            f"居住地區：{living_area}\n" \
            f"小朋友姓名： {kid_name}\n" \
-           f"小朋友姓名：' {kid_yeasold}\n" \
+           f"小朋友姓名： {kid_yeasold}\n" \
            f"小朋友性别： {kid_gender}\n" \
-           f"上堂日子:\n" + "\n".join(lessons)
+           f"小朋友有沒有任何敏感/身體狀況需留意： {Noticication}\n"\
+           f"上堂日子:\n" + "\n".join(lessons)\
 
     msg.attach(MIMEText(body, 'plain'))
 
@@ -79,18 +81,28 @@ def main():
     st.subheader("上課地點")
     st.write("新界沙田源順圍28號都會廣場2009室")
     st.subheader("報名名單\n")
+
     parant_name = st.text_input("家長稱謂：")
     st.write(f"您的稱謂是{parant_name}")
+
     content_number = st.text_input("聯絡電話：")
     st.write(f"您的聯絡電話是{content_number}")
+
     living_area =st.text_input('居住地區：')
     st.write(f"您的居住地區是{living_area}")
+
     kid_name = st.text_input('小朋友姓名：')
     st.write(f"小朋友的姓名是{kid_name}")
+
     kid_yeasold = st.text_input('小朋友年齡：')
     st.write(f"小朋友的年齡是{kid_yeasold}")
+
     kid_gender = st.selectbox("小朋友性别：",("女","男"))
     st.write(f"小朋友的性别是{kid_gender}")
+
+    Notification = st.text_input("小朋友有沒有任何敏感/身體狀況需留意：", "Nope")
+
+
     lesson1_day,lesson1_date = select_date("第一堂日期(星期一至星期六)：")
     lesson1_time,j = selecttime(lesson1_day,lesson1_date,j)
     st.write(f"第二堂日期是{lesson1_date}，時段是{lesson1_time}")
@@ -138,7 +150,7 @@ def main():
             f"Lesson 9: {lesson9_date} {lesson9_time}",
             f"Lesson 10: {lesson10_date} {lesson10_time}"
         ]
-        send_email(parant_name, content_number, living_area, kid_name, kid_yeasold, kid_gender, lessons)
+        send_email(parant_name, content_number, living_area, kid_name, kid_yeasold, kid_gender, lessons, Notification)
 
 if __name__ == "__main__":
     main()
